@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Sender {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String?
+  emails    Email[]
+  createdAt DateTime @default(now())
+}
+
+model Template {
+  id        String   @id @default(uuid())
+  name      String
+  subject   String
+  body      String
+  htmlBody  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SmtpConfig {
+  id        String   @id @default("default")
+  host      String
+  port      Int      @default(587)
+  secure    Boolean  @default(false)
+  username  String
+  password  String
+  fromName  String?
+  updatedAt DateTime @updatedAt
+}
+
+model Email {
+  id          String      @id @default(uuid())
+  to          String
+  subject     String
+  body        String
+  htmlBody    String?
+  attachments Json?
+  recipientData Json?
+  scheduledAt DateTime
+  sentAt      DateTime?
+  status      EmailStatus @default(PENDING)
+  sender      Sender      @relation(fields: [senderId], references: [id])
+  senderId    String
+  createdAt   DateTime    @default(now())
+}
+
+enum EmailStatus {
+  PENDING
+  SENT
+  FAILED
+}

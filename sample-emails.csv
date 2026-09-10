@@ -1,0 +1,6 @@
+email,first_name,last_name,company,role,plan,renewal_date,booking_link,unsubscribe_url
+john.doe@example.com,John,Doe,Northstar Labs,Product Lead,Pro,2026-11-18,https://example.com/book/john,https://example.com/unsubscribe/john
+jane.smith@example.com,Jane,Smith,Kindred Studio,Founder,Team,2026-12-03,https://example.com/book/jane,https://example.com/unsubscribe/jane
+alice.johnson@example.com,Alice,Johnson,Evergreen Health,Operations Director,Business,2027-01-12,https://example.com/book/alice,https://example.com/unsubscribe/alice
+bob.williams@example.com,Bob,Williams,Signal House,Marketing Manager,Pro,2026-10-29,https://example.com/book/bob,https://example.com/unsubscribe/bob
+charlie.brown@example.com,Charlie,Brown,Common Thread,Customer Success Lead,Team,2026-12-21,https://example.com/book/charlie,https://example.com/unsubscribe/charlie
